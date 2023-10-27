@@ -1,0 +1,57 @@
+lsystem.l
+view.v
+anim.a
+material.mat
+functions.fset
+description.txt
+lpfg.mak
+bellis_contours_Mik_01_12_23.raw
+bellis_final.prims
+bellis_initial.prims
+bellis_stable.prims
+all_sources.tar.gz
+panel.l
+panel.vset
+ignore:
+lsys.so
+lpfg.log
+lsys.ii
+lsysinp.cpp
+lsys.o
+input.i
+*.swp
+temp*
+*
+Generate:
+    bash -c "if [ ! -d "include" ]; then tar -xzf all_sources.tar.gz; fi; export CPLUS_INCLUDE_PATH=./include; lpfg -w 900 900 material.mat lsystem.l view.v anim.a panel.vset functions.fset"
+
+L-system:
+	EDIT lsystem.l
+	panel:
+		display:
+	    	panel panel.l | awkped panel.vset
+		EDIT panel.l
+
+viewfile:
+	EDIT view.v
+
+animation:
+	EDIT anim.a
+
+materials:
+	MEDIT material.mat
+
+functions:
+	GALLERY functions.fset
+
+description:
+	EDIT description.txt
+
+recompress code:
+	tar -zcvf all_sources.tar.gz include
+
+extract code:
+	tar -xzf all_sources.tar.gz
+
+Make movie:
+	ffmpeg -framerate 30 -start_number 000 -i ~/.vlab/tmp/VLcvJ3Ai/frames/side/2023-10-4_bellis-side/lsystem%04d.png -c libx264 -preset medium -r 30 -pix_fmt yuv420p "bellis-side_2023-10-4.mp4"
