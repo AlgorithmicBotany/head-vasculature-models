@@ -1,0 +1,116 @@
+lsystem.l
+view.v
+anim.a
+materials.mat
+functions.fset
+contours.cset
+contours_markers.cset
+README.md
+bspline.h
+background_sections.png
+background_sections.s
+background.s
+lsystem_sections.l
+materials_sections.mat
+view_sections.v
+anim_sections.a
+lsystem_receptacle.l
+materials_receptacle.mat
+view_receptacle.v
+anim_receptacle.a
+knotPositions.dat
+lsystem_markers.l
+markers.h
+gerbera_initial.prims
+gerbera_stable.prims
+gerbera_final.prims
+gerbera.cntrs
+S1.jpeg
+S2.jpeg
+S3.jpeg
+S4.jpeg
+S5.jpeg
+S6.jpeg
+S7.jpeg
+S8.jpeg
+S9.jpeg
+S10.jpeg
+SizeComparison.jpeg
+ignore:
+lsys.so
+lpfg.log
+lsys.ii
+lsysinp.cpp
+lsys.o
+input.i
+*.swp
+*
+PHYLLOTAXIS MODEL:
+	run:
+		lpfg -w 1024 1024 materials.mat lsystem.l view.v anim.a contours.cset functions.fset
+
+L-system:
+	EDIT lsystem.l
+
+View:
+	EDIT view.v
+
+Animation:
+	EDIT anim.a
+
+Materials:
+	MEDIT materials.mat
+
+Make movie:
+	ffmpeg -framerate 60 -start_number 000 -i lsystem%04d.png -c libx264 -preset medium -r 30 -pix_fmt yuv420p gerbera.mp4
+
+LONGITUDINAL SECTIONS:
+	run:
+		lpfg -w 1280 768 materials_sections.mat lsystem_sections.l view_sections.v anim_sections.a contours.cset functions.fset
+
+L-system:
+	EDIT lsystem_sections.l
+
+View:
+	EDIT view_sections.v
+
+Animation:
+	EDIT anim_sections.a
+
+Materials:
+	MEDIT materials_sections.mat
+
+RECEPTACLE MODEL:
+	run:
+		lpfg -w 1280 768 materials_receptacle.mat lsystem_receptacle.l view_receptacle.v anim_receptacle.a contours.cset functions.fset
+
+L-system:
+	EDIT lsystem_receptacle.l
+
+View:
+	EDIT view_receptacle.v
+
+Animation:
+	EDIT anim_receptacle.a
+
+Materials:
+	MEDIT materials_receptacle.mat
+
+Make movie:
+	ffmpeg -framerate 60 -start_number 000 -i lsystem_receptacle%04d.png -c libx264 -preset medium -r 30 -pix_fmt yuv420p receptacle.mp4
+
+GALLERY:
+	functions:
+		gallery functions.fset
+	contours:
+		gallery contours.cset
+
+MARKERS:
+	generate:
+		lpfg lsystem_markers.l view.v contours_markers.cset functions.fset
+	edit:
+		EDIT lsystem_markers.l
+
+Description:
+	EDIT README.md
+
