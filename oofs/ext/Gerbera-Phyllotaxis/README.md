@@ -30,16 +30,16 @@ the (curved) surface of the plant.  The surface is parametrized by:
 - The curvilinear coordinate `s`, defined as the arc-length distance of points on the surface, measured from the base of the stem.  
 
 Some aspects of the simulation, in particular calculation of distances between primordia and visualization, are conveniently 
-performed using cylindrical and Cartesian coordinates.  Function SyncCoordinates converts the `phi`-`s` coordinates into
+performed using cylindrical and Cartesian coordinates.  Function `SyncCoordinates` converts the `phi`-`s` coordinates into
 cylindrical and Cartesian coordinates
 
-Modeling growth
+## Modeling growth
 
 Plant growth is modeled descriptively, by explicitly specifying the changes in shape and size of the receptacle.
  
 - Changes in the shape of the receptacle are modeled by interpolating between a number of curves that represent 
 its profile and different stages of development. Both curves are defined graphically using the lpfg contour editor (cuspy)
-and accessed from lpfg using its built-in function curveXYZ, which returns the xyz coordinates of a point on the curve given 
+and accessed from lpfg using its built-in function `curveXYZ`, which returns the xyz coordinates of a point on the curve given 
 its arc-length coordinate. The interpolation is performed by computing a weighted average 
 of the points with the same value of parameter `ns`. The weight is a variable `Progress`, which ranges from 0 to 1 and
 represents the progress of growth over time.  
@@ -62,7 +62,7 @@ size and shape of the primordia embedded in it may thus change.
 
 A primordium is described in three different coordinate systems:
 - arc-lengh-azimuth (used to simulate propagation of primordia on the surface of the meristem)
-- cylindrical (intermediate step, before conversion to Cartesian
+- cylindrical (intermediate step, before conversion to Cartesian)
 - Cartesian (used to measure distances, and display results)
 
 

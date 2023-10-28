@@ -41,7 +41,7 @@ lsys.o
 input.i
 *.swp
 *
-GROWTH MODEL:
+PHYLLOTAXIS MODEL:
 	run:
 		lpfg -w 1024 1024 materials.mat lsystem.l view.v anim.a contours.cset functions.fset
 
