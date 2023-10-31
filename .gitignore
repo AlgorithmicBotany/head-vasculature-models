@@ -23,7 +23,7 @@
 # Compiled Static libraries
 *.lai
 *.la
-*.a
+# *.a lpfg anim.a file extension overloaded
 *.lib
 
 # Executables
