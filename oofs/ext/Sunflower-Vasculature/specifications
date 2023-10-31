@@ -1,0 +1,60 @@
+lsystem.l
+view.v
+anim.a
+material.mat
+functions.fset
+README.md
+lpfg.mak
+sunflower_contours_weights.raw
+sunflower_sequence.png
+sunflower_final.prims
+sunflower_initial.prims
+sunflower_stable.prims
+all_sources.tar.gz
+panel.l
+panel.vset
+ignore:
+lsys.so
+lpfg.log
+lsys.ii
+lsysinp.cpp
+lsys.o
+*.o
+input.i
+*.swp
+temp*
+include
+*
+Generate:
+    bash -c "if [ ! -d "include" ]; then tar -xzf all_sources.tar.gz; fi; export CPLUS_INCLUDE_PATH=./include; lpfg -w 1080 1080 material.mat lsystem.l view.v anim.a panel.vset functions.fset"
+
+L-system:
+	EDIT lsystem.l
+	panel:
+		display:
+	    	panel panel.l | awkped panel.vset
+		EDIT panel.l
+
+viewfile:
+	EDIT view.v
+
+animation:
+	EDIT anim.a
+
+materials:
+	MEDIT material.mat
+
+functions:
+	GALLERY functions.fset
+
+description:
+	EDIT README.md
+
+recompress code:
+	tar -zcvf all_sources.tar.gz include
+
+extract code:
+	tar -xzf all_sources.tar.gz
+
+Make movie:
+	ffmpeg -framerate 30 -start_number 000 -i ~/.vlab/tmp/VLi7NrVL/frames/top/darker/2023-10-4_sunflower-top/lsystem%04d.png -c libx264 -preset medium -r 30 -pix_fmt yuv420p "sunflower_top_2024-10-4.mp4"
