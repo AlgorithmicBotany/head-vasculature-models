@@ -30,7 +30,7 @@ Computing the weight fields of each contour requires solving a series of Laplace
 
 A binary file (*.raw) stores the precomputed harmonic coordinates (weight fields) and the cage control points defining the contour and interior of the receptacle. For each developmental step of the receptacle there exists a cage of control points defining the countour and boundary of the current radial longitudinal section of the receptacle. A scalar weight field over interior of this 2-dimensional boundary is precomputed for each control point. For any given point in the domain, the contributions of all control point weights at that point sum to 1, providing an affine coordinate system of the point defined in terms of the control point positions. As the control point position change with each iteration, the vasculautre deforms as a function of the contour control points. Many small steps of the receptacle development, and the accompanying control points and harmonic weight fields, are precomputed. The file stores this information in binary for smaller file size.
 
-**NOTE** The binary file **bellis_contours_weights.raw** (100MB) must be downloaded separately at [algorithmicbotany.org](http://algorithmicbotany.org/).
+**NOTE** The binary file **sunflower_contours_weights.raw** (170MB) must be downloaded separately at [algorithmicbotany.org](http://algorithmicbotany.org/).
 
 ### Format
 ```
