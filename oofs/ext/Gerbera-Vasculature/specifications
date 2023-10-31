@@ -1,0 +1,61 @@
+lsystem.l
+view.v
+anim.a
+material.mat
+functions.fset
+README.md
+lpfg.mak
+gerbera_sequence.png
+gerbera_contours_weights.raw
+gerbera_final.prims
+gerbera_initial.prims
+gerbera_stable.prims
+all_sources.tar.gz
+panel.l
+panel.vset
+ignore:
+lsys.so
+lpfg.log
+lsys.ii
+lsysinp.cpp
+lsys.o
+input.i
+*.swp
+temp*
+*.o
+include
+gerbera_contours.raw
+*
+Generate:
+    bash -c "if [ ! -d "include" ]; then tar -xzf all_sources.tar.gz; fi; export CPLUS_INCLUDE_PATH=./include; lpfg -w 1080 1080 material.mat lsystem.l view.v anim.a panel.vset functions.fset"
+
+L-system:
+	EDIT lsystem.l
+	panel:
+		display:
+	    	panel panel.l | awkped panel.vset
+		EDIT panel.l
+
+viewfile:
+	EDIT view.v
+
+animation:
+	EDIT anim.a
+
+materials:
+	MEDIT material.mat
+
+functions:
+	GALLERY functions.fset
+
+description:
+	EDIT README.md
+
+recompress code:
+	tar -zcvf all_sources.tar.gz include
+
+extract code:
+	tar -xzf all_sources.tar.gz
+
+Make movie:
+	ffmpeg -framerate 30 -start_number 000 -i ~/.vlab/tmp/VLrXYZB0/frames/top/lsystem%04d.png -c libx264 -preset medium -r 30 -pix_fmt yuv420p "gerbera-top_2023-10-6.mp4"

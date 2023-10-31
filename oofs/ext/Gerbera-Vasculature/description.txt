@@ -1,0 +1,42 @@
+#Gerbera vasculature model
+
+The vasculature model procedurally generates the geometry and topology of vasculature developmentally driven by phyllotaxis patterning (Zhang 2022) on a growing receptacle. Vasculature patterning within the receptacle is modeled as a process that (abstractly) minimizes the resistance of auxin flow from sources --primordia-- to sinks --established vasculature connecting to the procambrial ring. The minimal resistance path through ground tissue and established vasculature is patterned as new vasculature, connecting incipient primordia to the rest of the vasculature.
+
+Adaxial veins run beneath the floret primordia, and ahead of the floret vasculature patterning, providing a scaffold for floret vasculature to connect. We have observed the adaxial veins patterning from within the receptacle, and not extending from an obvious auxin source (e.g., floret primordia). The adaxial veins run radially, developing inwards towards the center of the receptacle; they pattern in a `spoke'-like arrangment that do not follow parastichies (but perhaps closer to orthostichies), allowing for the spiral phyllotactic arrangement of primordia to connect to largely linear adaxial veins.
+
+The vascular model produces, in order,
+1. The procambrial ring (auxin sinks)
+2. Abaxial veins (yellow) connecting incipient bract veins to the procambrial ring and each other
+3. Floret veins (purple, regular; white trans) 
+connecting incipient floret primordia veins to the established vasculature
+4. Adaxial viens (red) pattern acropetally within the receptacle, from the established vasculature, towards the center of the receptacle. They provide scaffolding for floret veins to connect. 
+
+Several components of the model are precomputed and stored as file inputs to the model.
+
+1. (*.prims) The phllotaxis patterning of primordia. 
+Text file the lists the timestamped position (on the developing receptacle) that primordia was patterned.
+##Format
+# of primordia
+{id} {frame inserted} {arclength position from tip} {azimuth on receptacle} {type 0: bract, 1: trans 2: floret}
+
+2. (*.raw) The receptacle volumetric weights for development
+Binary file that stores the precomputed harmonic coordinates (weights) and the cage control points defining the contour and interior of the receptacle throughout its development. For each developmental step of the receptacle there exists a cage of control points defining the countour and boundary of the current radial longitudinal section of the receptacle. A scalar weight field over interior of this 2-dimensional boundary is precomputed for each control point. For any given point in the domain, the contributions of all control point weights at that point sum to 1, providing an affine coordinate system of the point defined in terms of the control point positions. As the control point position change with each iteration, the vasculautre deforms as a function of the contour control points. Many small steps of the receptacle development, and the accompanying control points and harmonic weight fields, are precomputed. The file stores this information in binary for smaller file size.
+##Format
+# of receptacle development frames
+// for each frame
+// -field (triangle mesh) information
+// -control point information
+// -weights per control point
+# of vertices
+{x pos} {y pos}
+...
+# of faces
+{vertex a ID} {vertex b ID} {vertex c ID}
+...
+# of control points
+{x pos} {y pos}
+...
+// for each control point, scalar per vertex
+{w weight at vertex}
+...
+  
