@@ -3,13 +3,14 @@ view.v
 anim.a
 material.mat
 functions.fset
-description.txt
+README.md
 lpfg.mak
-bellis_contours_Mik_01_12_23.raw
+bellis_contours_weights.raw
 bellis_final.prims
 bellis_initial.prims
 bellis_stable.prims
 all_sources.tar.gz
+bellis_sequence.png
 panel.l
 panel.vset
 ignore:
@@ -45,7 +46,7 @@ functions:
 	GALLERY functions.fset
 
 description:
-	EDIT description.txt
+	EDIT README.md
 
 recompress code:
 	tar -zcvf all_sources.tar.gz include

@@ -615,8 +615,7 @@ struct BellisVasculature : Model {
 
   void loadReceptacle() {
     auto loaded = modelling::readMeshCageDeformationFromBinaryFile(
-        "./bellis_contours_Mik_01_12_23.raw");
-    //"./gerbera_contours.raw");
+        "./bellis_contours_weights.raw");
     if (loaded) {
       growingReceptacle.reload(std::move(*loaded));
       std::cerr << "Loaded contours: " << growingReceptacle.size() << '\n';
@@ -625,16 +624,8 @@ struct BellisVasculature : Model {
   void loadPhyllotaxis() {
     orderedPrims =
         phyl::readTimestampPrimordiaFromFile("./bellis_stable.prims");
-    // phyl::readTimestampPrimordiaFromFile("./gerbera_initial.prims");
-
-    // for (auto const &p : orderedPrims) {
-    //  std::cerr << "PRE " << p << std::endl;
-    //}
 
     orderedPrims = phyl::fixOutOfOrder(orderedPrims);
-    // for (auto const &p : orderedPrims) {
-    //  std::cerr << "POST " << p << std::endl;
-    //}
   }
 
   //
