@@ -5,6 +5,7 @@ materials.mat
 functions.fset
 contours.cset
 contours_markers.cset
+sunflower_sequence_phyllotaxis.png
 README.md
 bspline.h
 background_sections.png
