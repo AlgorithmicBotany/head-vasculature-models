@@ -1,5 +1,7 @@
 # A model of phyllotaxis patterning in gerbera
 
+![Gerbera sequence](gerbera_sequence_phyllotaxis.png)
+
 This model is almost identical to Model 3 of Zhang et al. (2021), which can be downloaded from here:
 http://algorithmicbotany.org/papers/gerbera2021.html, except that in this model the trans florets are labelled.
 
