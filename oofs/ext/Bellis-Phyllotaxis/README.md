@@ -1,5 +1,7 @@
 # A model of phyllotaxis for Bellis (common daisy)
 
+![Bellis sequence](bellis_sequence_phyllotaxis.png)
+
 This model is a slight modification of the gerbera model from Zhang et al. (2021).
 More precisely, it is a modified version of Model 3 from that paper, which can be downloaded from here:
 http://algorithmicbotany.org/papers/gerbera2021.html
