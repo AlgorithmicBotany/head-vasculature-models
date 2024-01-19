@@ -678,7 +678,7 @@ struct BellisVasculature : Model {
       for (auto &tip : veinTips) {
         tip->data.age = 0;
 
-        auto newTip = growVeinInitialOrthogonalToReceptical(
+        auto newTip = vasculature::growVeinInitialOrthogonalToReceptical(
             tip, veins, params.stepDistance, params.veinJitterStrength,
             params.veinJitterFrequency);
 
